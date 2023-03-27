@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const rand = (min, max) => {
+      return Math.round(Math.random() * (max - min)) + min
+    }
+    const groupA = []
+    for (let i = 0; i < 6; i++) {
+
+      const num = rand(1, 38)
+      if (groupA.includes(num)) {
+        i--
+      } else {
+        groupA.push(num)
+      }
+    }
+
+    while (groupA.length < 6) {
+      const num = rand(1, 38)
+      if (!groupA.includes(num)) {
+        groupA.push(num)
+      }
+    }
+
+    const numbers = []
+    for (let i = 1; i <= 38; i++) {
+      numbers.push(i)
+    }
+    for (let i = 0; i < 6; i++) {
+      const index = rand(0, numbers.length - 1)
+      groupA.push(numbers[index])
+      numbers.splice(index, 1)
+    }
+    document.write(groupA.join(','))
+  </script>
+</body>
+
+</html>
